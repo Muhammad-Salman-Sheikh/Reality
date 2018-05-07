@@ -57,4 +57,4 @@ def Interpreter(program , stream):
 	return strValue if not strValue == '' else intValue
 	
 	
-print(Interpreter('',input()))
+print(Interpreter('C',input()))
