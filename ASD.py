@@ -1,5 +1,6 @@
 import sys
 
+
 def Interpreter(program , stream):
 	'''
 	Initial values for both integral and string results
@@ -36,10 +37,15 @@ def Interpreter(program , stream):
 	for i in program :
 		'''
 		Primality test ! (number via stdinput)
+		and 
+		Primality test (no input)
 		'''
-		if i == 'P' and len(program) == 1:
+		if i == 'P' and len(program) == 1 :
 			inSt = int(stream)
 			strValue = 'true' if not (inSt < 2 or any(inSt % x == 0 for x in range(2, int(inSt ** 0.5) + 1))) else 'false'
+		elif i == 'P' and len(program) > 1 :
+			inSt = int(program[1:])
+			strValue = 'true' if not (inSt < 2 or any(inSt % x == 0 for x in range(2, int(inSt ** 0.5) + 1))) else 'false'			
 			'''
 			Collatz conjecture (number via stdinput)
 			'''
@@ -53,8 +59,15 @@ def Interpreter(program , stream):
 					inSt = inSt * 3 + 1
 				counter += 1
 			intValue = counter
-			
+			'''
+			operators (+ , - , * , / , %) 
+			numbers taken via stdinput 
+			separated by ','
+			'''
+		for j in ['+' , '-' , '*' , '/' , '%'] :
+			if i == j and len(program) == 1 :
+				inSt = stream.split(',')
+				intValue = eval(inSt[0] + str(i) + inSt[1])
 	return strValue if not strValue == '' else intValue
 	
-	
-print(Interpreter('C',input()))
+print(Interpreter('',input()))
