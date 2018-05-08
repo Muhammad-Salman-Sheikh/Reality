@@ -59,15 +59,20 @@ def Interpreter(program , stream):
 					inSt = inSt * 3 + 1
 				counter += 1
 			intValue = counter
-			'''
-			operators (+ , - , * , / , %) 
-			numbers taken via stdinput 
-			separated by ','
-			'''
 		for j in ['+' , '-' , '*' , '/' , '%'] :
 			if i == j and len(program) == 1 :
 				inSt = stream.split(',')
 				intValue = eval(inSt[0] + str(i) + inSt[1])
+				'''
+				checking for leap year (input via stdinput)
+				'''
+		if i == 'L' and len(program) == 1 :
+			inSt = int(stream)
+			strValue = 'true' if inSt % 4 == 0 and (not inSt % 100 == 0 or inSt % 400 == 0) else 'false'
+		elif i == 'L' and len(program) > 1 :
+			inSt = int(program[1:])
+			strValue = 'true' if inSt % 4 == 0 and (not inSt % 100 == 0 or inSt % 400 == 0) else 'false'
+
 	return strValue if not strValue == '' else intValue
 	
-print(Interpreter('',input()))
+print(Interpreter('L400',input()))
