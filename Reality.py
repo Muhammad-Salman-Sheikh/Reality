@@ -63,9 +63,12 @@ def Interpreter(program , stream):
 			if i == j and len(program) == 1 :
 				inSt = stream.split(',')
 				intValue = eval(inSt[0] + str(i) + inSt[1])
-				'''
-				checking for leap year (input via stdinput)
-				'''
+			if i == j and len(program) > 1 : 
+				inSt = stream.split(j)
+				intValue = eval(inSt[0] + str(j) + inSt[1])
+			'''
+			checking for leap year (input via stdinput)
+			'''
 		if i == 'L' and len(program) == 1 :
 			inSt = int(stream)
 			strValue = 'true' if inSt % 4 == 0 and (not inSt % 100 == 0 or inSt % 400 == 0) else 'false'
@@ -74,5 +77,12 @@ def Interpreter(program , stream):
 			strValue = 'true' if inSt % 4 == 0 and (not inSt % 100 == 0 or inSt % 400 == 0) else 'false'
 
 	return strValue if not strValue == '' else intValue
+	'''
+	prog = sys.argv[1]
+	if prog.endswith('.txt'):
+	    prog = open(prog).read()
 	
-print(Interpreter('L400',input()))
+	print(Interpreter(prog,sys,sys.stdin.read()))
+	'''
+
+print(Interpreter('',input()))
