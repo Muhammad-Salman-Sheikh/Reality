@@ -24,10 +24,10 @@ def Interpreter(program , stream):
 				a += '' + str(i) + ' '
 		strValue = '\n'.join(a.split(" "))
 		return strValue
-	'''
-	input is given but program is empty 
-	then just print the output
-	'''
+		'''
+		input is given but program is empty 
+		then just print the output
+		'''
 	elif program == '' and len(stream) > 1 :
 		strValue = stream
 		'''
@@ -66,11 +66,14 @@ def Interpreter(program , stream):
 				counter += 1
 			intValue = counter
 		for j in ['+' , '-' , '*' , '/' , '%'] :
-			if i == j and len(program) == 1 :
+			if i == j and not any(k.isdigit() for k in program) :
 				inSt = stream.split(',')
-				intValue = eval(inSt[0] + str(i) + inSt[1])
-			if i == j and len(program) > 1 : 
-				inSt = stream.split(j)
+				intValue = eval(inSt[0] + str(j) + inSt[1])
+			if i == j and any(k.isdigit() for k in program) : 
+				inSt = program.split(j)
+				
+				# for l in inSt :
+#				intValue += eval()
 				intValue = eval(inSt[0] + str(j) + inSt[1])
 			'''
 			checking for leap year (input via stdinput)
