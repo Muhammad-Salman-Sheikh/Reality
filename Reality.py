@@ -78,9 +78,8 @@ def Interpreter(program , stream):
 
 	return strValue if not strValue == '' else intValue if not intValue == 0 else program
 
-program = sys.argv[1]
-if program.endswith('.txt') :
-	program = open(program).read()
+
+program = open(sys.argv[1]).read()
 
 print(Interpreter(program,sys.stdin.read()))
 
