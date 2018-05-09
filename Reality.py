@@ -85,7 +85,13 @@ def Interpreter(program , stream):
 		elif i == 'L' and len(program) > 1 :
 			inSt = int(program[1:])
 			strValue = 'true' if inSt % 4 == 0 and (not inSt % 100 == 0 or inSt % 400 == 0) else 'false'
-
+		if i == '!' :
+			inSt = int(stream)
+			result = 1
+			for i in range(2, inSt + 1):
+				result *= i
+			intValue = result
+				
 	return strValue if not strValue == '' else intValue if not intValue == 0 else program
 
 
@@ -93,5 +99,4 @@ program = open(sys.argv[1]).read()
 
 print(Interpreter(program,sys.stdin.read()))
 
-#print(Interpreter('',input()))
-# ^ if you want you can do that too
+#print(Interpreter('!',input()))
