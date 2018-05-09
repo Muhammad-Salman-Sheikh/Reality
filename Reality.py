@@ -77,12 +77,12 @@ def Interpreter(program , stream):
 			strValue = 'true' if inSt % 4 == 0 and (not inSt % 100 == 0 or inSt % 400 == 0) else 'false'
 
 	return strValue if not strValue == '' else intValue
-	'''
-	prog = sys.argv[1]
-	if prog.endswith('.txt'):
-	    prog = open(prog).read()
-	
-	print(Interpreter(prog,sys,sys.stdin.read()))
-	'''
 
-print(Interpreter('',input()))
+program = sys.argv[1]
+if program.endswith('.txt') :
+    program = open(program).read()
+
+print(Interpreter(prog,sys.stdin.read()))
+
+# print(Interpreter('',input()))
+# ^ if you want you can do that too
