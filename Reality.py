@@ -8,10 +8,10 @@ def Interpreter(program , stream):
 	intValue = 0
 	strValue = ''
 	'''
-	Checking for empty program
+	Checking for empty program and input is not given
 	and outputting the FizzBuzz program ahh good ol' fizzbuzz !
 	'''
-	if program == '':
+	if program == '' and len(stream) == 0 :
 		a = ''
 		for i in range(1,100):
 			if i % 3 == 0 and i % 5 == 0:
@@ -24,6 +24,12 @@ def Interpreter(program , stream):
 				a += '' + str(i) + ' '
 		strValue = '\n'.join(a.split(" "))
 		return strValue
+	'''
+	input is given but program is empty 
+	then just print the output
+	'''
+	elif program == '' and len(stream) > 1 :
+		strValue = stream
 		'''
 		Checking if it is 1 byte program and is a space
 		then going forward with our plan to be masters and write hello world 
@@ -68,6 +74,7 @@ def Interpreter(program , stream):
 				intValue = eval(inSt[0] + str(j) + inSt[1])
 			'''
 			checking for leap year (input via stdinput)
+			alternate input given in program
 			'''
 		if i == 'L' and len(program) == 1 :
 			inSt = int(stream)
@@ -83,5 +90,5 @@ program = open(sys.argv[1]).read()
 
 print(Interpreter(program,sys.stdin.read()))
 
-#print(Interpreter('1',input()))
+#print(Interpreter('',input()))
 # ^ if you want you can do that too
